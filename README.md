@@ -1,93 +1,57 @@
-# SmartCamera_Nutpapop
-Controlling Zigbee LED light with hand gestures using ESP-32 CAM and Node-RED with Python CVZone.
-This project is intended to be used in a linux environment.
+# SmartCamera
+## What can it be used for?
+Controlling On/Off, Brightness, Temperature Color and Light Color of Zigbee Light Bulb with hand gestures using ESP-32 CAM and Node-RED with Python CVZone.
+
+## Softwares Prerequisites
+- Python *3.10*
+- Docker
+- Node.js *16*
+- Node-RED
+- Visual Studio Code with PlatformIO Extension
+- Zigbee2MQTT
+
+## Hardwares Prerequisites
+- Computer with Linux based Operating System
+- ESP32-CAM
+- Zigbee USB Dongle
+- Zigbee Light Bulb
+
+## How to use it?
+### Mode 1 (Default)
+| Fingers           | Operation              |
+|-------------------|------------------------|
+| 1 finger up       | Toggle ON/OFF          |
+| 2 fingers up      | MODE Brightness        |
+| 3 fingers up      | MODE Temperature Color |
+| 4 fingers up      | MODE Light Color       |
+### Mode 2 (Brightness)
+| Fingers                   | Operation                |
+|---------------------------|--------------------------|
+| 1 finger up               | Lowest brightness level  |
+| 2 fingers up              | Low brightness level     |
+| 3 fingers up              | Medium brightness level  |
+| 4 fingers up              | High brightness level    |
+| 5 fingers up              | Highest brightness level |
+| Index finger and Pinky up | MODE Default             |
+### Mode 3 (Temperature Color)
+| Fingers                   | Operation                          |
+|---------------------------|------------------------------------|
+| 1 finger up               | Coolest temperature level          |
+| 2 fingers up              | Cool through temperature level     |
+| 3 fingers up              | Neutral through temperature level  |
+| 4 fingers up              | Warm through temperature level     |
+| 5 fingers up              | Warmest through temperature level  |
+| Index finger and Pinky up | MODE Default                       |
+### Mode 4 (Light Color)
+| Fingers                   | Operation          |
+|---------------------------|--------------------|
+| 1 finger up               | White color        |
+| 2 fingers up              | Purple color       |
+| 3 fingers up              | Pink color         |
+| 4 fingers up              | Orange color       |
+| 5 fingers up              | Blue color         |
+| Index finger and Pinky up | MODE Default       |
 
 ## Contributors
-1. Nutpapop Yasawut
-2. Kasidit Chunpen
-
-# Installation
-## Prerequisites
-- Softwares
-  1. Python *3.10*
-  2. Docker
-  3. Node.js *16*
-  4. Node-RED
-  5. Visual Studio Code with PlatformIO Extension
-  6. Zigbee2MQTT
-- Hardwares
-  1. Computer with Linux based Operating System
-  2. ESP32-CAM
-  3. Zigbee USB Dongle
-
-## Clone this repository
-```bash
-git clone https://github.com/CprE-KMUTNB/SmartCamera_Nutpapop.git
-cd SmartCamera_Nutpapop
-```
-
-## ESP-32 CAM
-### Change configurations as needed in `src/platform-io/Esp32CamWebserver/src/CameraWebsocket.cpp`
-```cpp
-...
-IPAddress LocalIp(192, 168, 1, 200);
-IPAddress Gateway(192, 168, 1, 1);
-IPAddress NMask(255, 255, 255, 0);
-...
-const char *hotspot_ssid = "ESP32-CAM";
-const char *hotspot_password = "12345678";
-...
-const uint16_t websockets_server_port = 8000; // OPTIONAL CHANGE
-...
-```
-### Upload the PlatformIO project in `src/platform-io/Esp32CamWebserver`
-
-## Linux
-### Configure and start Zigbee2MQTT
-### Pair the LED with Zigbee2MQTT
-### Make a python virtual environment and install packages
-```bash
-python -m venv ./venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-### Create a Docker container with `eclipse-mosquitto` image
-```bash
-docker run -it -p 1883:1883 -p 9001:9001 -v mosquitto.conf:/mosquitto/config/mosquitto.conf eclipse-mosquitto
-```
-### Change configurations as needed in `settings.conf`
-### Run the start script
-```bash
-./bin/start.sh
-```
-
-# Usage
-## Initial Configuration
-- Connect to ESP32-CAM hotspot with the configured password
-- Go to `192.168.1.200` in web browser
-- Configure WiFi and Node-RED server IP Address
-- Go to `http://localhost:1880/ui` in web browser
-
-## Modes of Operation
-### Mode 1 (Default)
-| Fingers           | Operation        |
-|-------------------|------------------|
-| 1 fingers up      | Toggle ON/OFF    |
-| 2 fingers up      | MODE Brightness  |
-| 3 fingers up      | MODE Temperature |
-| 4 fingers up      | MODE Color       |
-### Mode 2 (Brightness)
-| Fingers                   | Operation                          |
-|---------------------------|------------------------------------|
-| 1 to 5 fingers up         | Incrementally set brightness level |
-| Index finger and Pinky up | MODE Default                       |
-### Mode 3 (Temperature)
-| Fingers                   | Operation                          |
-|---------------------------|------------------------------------|
-| 1 to 5 fingers up         | Cycle through temperature levels   |
-| Index finger and Pinky up | MODE Default                       |
-### Mode 4 (Color)
-| Fingers                   | Operation                          |
-|---------------------------|------------------------------------|
-| 1 to 5 fingers up         | Cycle through set of colors        |
-| Index finger and Pinky up | MODE Default                       |
+- Nutpapop Yasawut 65-010126-2003-9
+- Kasidit Chunpen 65-010126-3002-6
